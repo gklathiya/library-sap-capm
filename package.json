@@ -20,8 +20,26 @@
   },
   "cds": {
     "requires": {
-      "auth": "xsuaa",
-      "db": "hana"
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "auth": {
+        "[production]": {
+          "strategy": "JWT"
+        }
+      },
+      "db": {
+        "[production]": {
+          "kind": "hana"
+        },
+        "[development]": {
+          "kind": "hana"
+        },
+        "model": [
+          "db",
+          "srv"
+        ]
+      }
     }
   }
 }
